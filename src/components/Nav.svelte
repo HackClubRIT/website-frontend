@@ -47,48 +47,29 @@
       </a>
 
       <ul class="hidden md:flex md:flex-row" id="mobileMenu">
-        <li class="m-5 p-5" on:click={handleHamClick}>
+        <li class="m-5 px-5" on:click={handleHamClick}>
           <a aria-current={segment === undefined ? "page" : undefined} href="."
             >Home</a
           >
         </li>
-        <li class="m-5 p-5" on:click={handleHamClick}>
+        <li class="m-5 px-5" on:click={handleHamClick}>
           <a
             aria-current={segment === "events" ? "page" : undefined}
             href="events">Events</a
           >
         </li>
-        <li class="m-5 p-5" on:click={handleHamClick}>
+        <li class="m-5 px-5" on:click={handleHamClick}>
           <a
             aria-current={segment === "scrapbook" ? "page" : undefined}
             href="scrapbook">Scrapbook</a
           >
         </li>
-        <li class="m-5 p-5" on:click={handleHamClick}>
+        <li class="m-5 px-5" on:click={handleHamClick}>
           <a
             aria-current={segment === "newsletter" ? "page" : undefined}
             href="newsletter">Newsletter</a
           >
         </li>
-        <svg
-          class="m-10"
-          id="mode-switcher"
-          viewBox="0 0 32 32"
-          width={24}
-          height={24}
-          fill="currentcolor"
-          on:click={handleColorSwitch}
-        >
-          <circle
-            cx={16}
-            cy={16}
-            r={14}
-            fill="none"
-            stroke="currentcolor"
-            strokeWidth={4}
-          />
-          <path d="M 16 0 A 16 16 0 0 0 16 32 z" />
-        </svg>
       </ul>
     </nav>
   </div>

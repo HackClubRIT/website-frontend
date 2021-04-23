@@ -7,7 +7,7 @@
 
 <Nav {segment} />
 
-<main class="bg-dark font-main">
+<main class="relative bg-darker font-main">
   <slot />
 </main>
 
