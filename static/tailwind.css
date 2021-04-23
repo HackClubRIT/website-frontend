@@ -18,13 +18,30 @@ a {
 }
 
 .container {
-  @apply w-2/3 mx-auto p-10 h-72 text-snow;
+  @apply w-2/3 mx-auto p-10 h-auto text-snow;
 }
 
 .btn {
-  @apply rounded-full bg-red m-6 py-2 px-6 text-2xl font-main font-bold cursor-pointer tracking-wider transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110;
+  @apply rounded-full bg-red text-snow py-2 px-6 text-2xl font-main font-bold cursor-pointer tracking-wider transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110;
 }
 
 .anchor {
-  @apply block h-10 bg-red text-snow my-2 px-5 leading-10 rounded-r-full hover:bg-snow hover:text-red;
+  @apply block h-10 bg-red text-snow my-2 px-5 leading-10 rounded-r-full hover:bg-cyan hover:text-darker;
+}
+
+.card {
+  @apply rounded bg-dark shadow-md overflow-hidden relative;
+}
+
+.highlight {
+  @apply rounded-lg bg-cyan text-darker font-bold px-2;
+}
+
+.form-container {
+  @apply rounded bg-darker shadow-md overflow-hidden relative;
+
+}
+
+.form-fields  {
+  @apply bg-dark text-snow placeholder-secondary
 }

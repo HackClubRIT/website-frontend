@@ -1,10 +1,25 @@
+<script>
+  import Header from "../components/Header.svelte";
+
+  export let title = "Hack Club RIT’s Scrapbook";
+  export let description =
+    "A diary of what our Hack Clubbers are learning & making.";
+</script>
+
 <svelte:head>
   <title>Scrapbook</title>
 </svelte:head>
 
-<div id="scrapbook" class="h-screen text-snow">
-  <div class="container text-center">
-    <h1 class="text-6xl">Hack Club RIT’s Scrapbook</h1>
-    <p class="text-xl">A diary of what our Hack Clubbers are learning & making.</p>
-  </div>
+<Header {title} {description} />
+
+<div class="container grid grid-cols-3 gap-4">
+  <div class="card h-96 w-96"/>
+  <div class="card h-96 w-96"/>
+  <div class="card h-96 w-96"/>
+  <div class="card h-96 w-96"/>
+  <div class="card h-96 w-96"/>
+  <div class="card h-96 w-96"/>
+  <div class="card h-96 w-96"/>
+  <div class="card h-96 w-96"/>
+  <div class="card h-96 w-96"/>
 </div>
