@@ -21,9 +21,16 @@
       hamBar.classList.remove("hidden");
     }
   }
+
+  function handleColorSwitch() {
+    let mode;
+    let setMode = mode === "dark" ? "light" : "dark";
+
+    console.log(mode);
+  }
 </script>
 
-<div class="w-full bg-black text-white fixed">
+<div class="w-full bg-dark text-white sticky">
   <div class="w-2/3 mx-auto top-0 px-10">
     <nav class="flex md:justify-between items-center">
       <a href=".">
@@ -63,6 +70,25 @@
             href="newsletter">Newsletter</a
           >
         </li>
+        <svg
+          class="m-10"
+          id="mode-switcher"
+          viewBox="0 0 32 32"
+          width={24}
+          height={24}
+          fill="currentcolor"
+          on:click={handleColorSwitch}
+        >
+          <circle
+            cx={16}
+            cy={16}
+            r={14}
+            fill="none"
+            stroke="currentcolor"
+            strokeWidth={4}
+          />
+          <path d="M 16 0 A 16 16 0 0 0 16 32 z" />
+        </svg>
       </ul>
     </nav>
   </div>

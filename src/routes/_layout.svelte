@@ -1,11 +1,14 @@
 <script>
-	import Nav from '../components/Nav.svelte';
+  import Nav from "../components/Nav.svelte";
+  import Footer from "../components/Footer.svelte";
 
-	export let segment;
+  export let segment;
 </script>
 
-<Nav {segment}/>
+<Nav {segment} />
 
-<main class="bg-black">
-	<slot></slot>
+<main class="bg-dark font-main">
+  <slot />
 </main>
+
+<Footer />
