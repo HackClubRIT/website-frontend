@@ -26,7 +26,7 @@ a {
 }
 
 .anchor {
-  @apply block h-10 bg-red text-snow my-2 px-5 leading-10 rounded-r-full hover:bg-cyan hover:text-darker;
+  @apply block md:h-10 bg-red text-snow md:my-2 md:px-5 md:leading-10 rounded-r-full hover:bg-cyan hover:text-darker;
 }
 
 .card {
