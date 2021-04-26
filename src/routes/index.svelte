@@ -60,7 +60,7 @@
   </svg>
 
   <div id="aboutus" class="container">
-    <h2 class="text-2xl">ABOUT US</h2>
+    <h2 class="text-xl md:text-2xl">ABOUT US</h2>
     <div class="md:flex justify-between">
       <img class="md:w-1/3 mx-4 my-6 p-4" src="meetings.png" alt="meeting" />
       <div>
@@ -90,9 +90,9 @@
   <div id="events" class="container">
     <h2 class="text-2xl">EVENTS</h2>
     <div class="md:flex justify-between">
-      <div class="card h-96 w-96" />
-      <div class="card h-96 w-96" />
-      <div class="card h-96 w-96" />
+      <div class="card h-24 w-24 md:h-96 md:w-96" />
+      <div class="card h-24 w-24 md:h-96 md:w-96" />
+      <div class="card h-24 w-24 md:h-96 md:w-96" />
     </div>
   </div>
 
