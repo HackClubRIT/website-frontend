@@ -46,8 +46,7 @@
 <div id="main" class="text-sm md:text-lg">
   <div id="joinus" class="text-center bg-dark pt-10 px-10">
     <Header {title} {description} />
-    
-    <button class="btn"><a href="membership">Join Us</a></button>
+    <button class="btn">Join Us</button>
   </div>
   <svg
     class="fill-current text-dark"
