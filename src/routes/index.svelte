@@ -1,9 +1,11 @@
 <script>
   import Header from "../components/Header.svelte";
+  
   export let title =
     "Hack Club is a nonprofit network of makers around the world.";
   export let description =
     "Learning to code is uniquely like  gaining a superpower—turning you from a consumer of technology into a creator. So it shouldn’t be taught like a class, it should be a creative, inclusive space. To foster this environment, every Hack Club is student-led & members make self-directed projects.";
+
   function handleAnchorClick(event) {
     event.preventDefault();
     const link = event.currentTarget;
