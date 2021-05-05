@@ -1,11 +1,9 @@
 <script>
   import Header from "../components/Header.svelte";
-
   export let title =
     "Hack Club is a nonprofit network of makers around the world.";
   export let description =
     "Learning to code is uniquely like  gaining a superpower—turning you from a consumer of technology into a creator. So it shouldn’t be taught like a class, it should be a creative, inclusive space. To foster this environment, every Hack Club is student-led & members make self-directed projects.";
-
   function handleAnchorClick(event) {
     event.preventDefault();
     const link = event.currentTarget;
@@ -46,7 +44,8 @@
 <div id="main" class="text-sm md:text-lg">
   <div id="joinus" class="text-center bg-dark pt-10 px-10">
     <Header {title} {description} />
-    <button class="btn">Join Us</button>
+
+    <button class="btn"><a href="membership">Join Us</a></button>
   </div>
   <svg
     class="fill-current text-dark"
@@ -60,7 +59,7 @@
   </svg>
 
   <div id="aboutus" class="container">
-    <h2 class="text-2xl">ABOUT US</h2>
+    <h2 class="text-xl md:text-2xl">ABOUT US</h2>
     <div class="md:flex justify-between">
       <img class="md:w-1/3 mx-4 my-6 p-4" src="meetings.png" alt="meeting" />
       <div>
@@ -90,9 +89,9 @@
   <div id="events" class="container">
     <h2 class="text-2xl">EVENTS</h2>
     <div class="md:flex justify-between">
-      <div class="card h-96 w-96" />
-      <div class="card h-96 w-96" />
-      <div class="card h-96 w-96" />
+      <div class="card h-24 w-24 md:h-96 md:w-96" />
+      <div class="card h-24 w-24 md:h-96 md:w-96" />
+      <div class="card h-24 w-24 md:h-96 md:w-96" />
     </div>
   </div>
 
