@@ -90,7 +90,7 @@
   }
 </script>
 
-<div class="flex items-center h-full p-10 w-full">
+<div class="md:flex md:items-center h-full md:p-10 w-full">
   <div class="form-container">
     <form
       on:submit|preventDefault={submitForm}
