@@ -107,7 +107,7 @@
         id="email"
         controlType="email"
         label={email}
-        valid={!isEmpty(enteredEmail) && isEmailValid(enteredEmail)}
+        valid={isEmailValid(enteredEmail)}
         validityMessage="Please enter a valid email"
         on:input={(event) => (enteredEmail = event.target.value)}
       />

@@ -1,5 +1,7 @@
 export function isEmailValid(val) {
-  return typeof val === "string" ? val.includes("@") && val.includes(".") : "";
+  return new RegExp(
+    "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+  ).test(val);
 }
 
 export function isEmpty(val) {
