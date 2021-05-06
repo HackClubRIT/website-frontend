@@ -35,10 +35,9 @@
 
   function submitForm() {
     const formData = {
-      name: enteredName,
       email: enteredEmail,
-      contactno: contactNumber,
       data: {
+        contactno: contactNumber,
         year: enteredYear,
         dept: enteredDept,
         github: githubLink,
@@ -47,12 +46,13 @@
         q3: enteredA3,
         q4: enteredA4,
       },
+      name: enteredName,
     };
 
-    fetch("https://hackclub-backend.herokuapp.com/application", {
+    fetch("https://hackclub-backend.herokuapp.com/application/", {
       method: "POST",
       body: JSON.stringify(formData),
-      headers: { "Content-type": application / json },
+      headers: { "Content-type": "application / json" },
     })
       .then((res) => {
         if (!res.ok) {
@@ -191,7 +191,7 @@
           {CoC}</label
         >
       </div> -->
-      <!-- <Button type="submit" caption="Apply" on:click="{()=>dispatch()}"/> -->
+      <Button type="submit" caption="Apply" on:click="{submitForm}"/>
     </form>
   </div>
 </div>
