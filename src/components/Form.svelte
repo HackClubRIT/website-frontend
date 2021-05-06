@@ -22,16 +22,16 @@
 
   // bind
   let agreed;
-  let enteredName;
-  let enteredEmail;
-  let contactNumber;
+  let enteredName = "";
+  let enteredEmail = "";
+  let contactNumber = "";
   let enteredYear = 1;
   let enteredDept = "CSE";
-  let enteredA1;
-  let enteredA2;
-  let enteredA3;
-  let enteredA4;
-  let githubLink;
+  let enteredA1 = "";
+  let enteredA2 = "";
+  let enteredA3 = "";
+  let enteredA4 = "";
+  let githubLink = "";
 
   //vaildate
   let isFormValid = false;
