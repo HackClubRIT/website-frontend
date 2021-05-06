@@ -6,7 +6,6 @@
   export let rows = null;
   export let valid = true;
   export let validityMessage = "";
-  export let options = null;
 
   let touched = false;
 </script>
@@ -42,20 +41,7 @@
       {value}
       on:input
       on:blur={() => (touched = true)}
-    />
-  {:else if controlType === "radio"}
-    {#each options as opt}
-      <label class="field-label" for="radio">
-        <input
-          class="form-fields"
-          type="radio"
-          value={opt}
-          bind:group={value}
-          {id}
-        />
-        {opt}</label
-      >
-    {/each}
+    />    
   {/if}
   {#if validityMessage && !valid && touched}
     <p class="text-red p-2">{validityMessage}</p>

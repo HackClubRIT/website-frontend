@@ -22,11 +22,11 @@
   import { empty } from "svelte/internal";
 
   // bind
-  let agreed;
+  let agreed = false;
   let enteredName = "";
   let enteredEmail = "";
   let contactNumber = "";
-  let enteredYear = 1;
+  let enteredYear = "1";
   let enteredDept = "CSE";
   let enteredA1 = "";
   let enteredA2 = "";
@@ -55,9 +55,9 @@
     contactValid &&
     answer1Valid &&
     answer3Valid &&
-    linkValid;
+    linkValid && agreed;
 
-  function submitForm() {
+  async function submitForm() {
     const formData = {
       email: enteredEmail,
       data: {
@@ -69,11 +69,12 @@
         q1: enteredA2,
         q3: enteredA3,
         q4: enteredA4,
+        CoC: agreed,
       },
       name: enteredName,
     };
-
-    fetch("https://hackclub-backend.herokuapp.com/application/", {
+    console.log(formData);
+    await fetch("https://hackclub-backend.herokuapp.com/application/", {
       method: "POST",
       body: JSON.stringify(formData),
       headers: { "Content-type": "application / json" },
@@ -134,24 +135,37 @@
         on:input={(event) => (contactNumber = event.target.value)}
       />
       <!-- year -->
-      <TextInput
-        id="year"
-        controlType="radio"
-        value={years[0]}
-        label={year}
-        options={years}
-        on:input={(event) => (enteredYear = event.target.value)}
-      />
+      <div class="field-group">
+        <label class="field-label" for="year">{year}</label>
+        {#each years as yr}
+          <label class="field-label" for="radio">
+            <input
+              class="form-fields"
+              type="radio"
+              value={yr}
+              bind:group={enteredYear}
+              id="year"
+            />
+            {yr}</label
+          >
+        {/each}
+      </div>
       <!-- dept -->
-      <TextInput
-        id="dept"
-        controlType="radio"
-        value={depts[0]}
-        label={dept}
-        options={depts}
-        on:input={(event) => (enteredDept = event.target.value)}
-      />
-
+      <div class="field-group">
+        <label class="field-label" for="dept">{dept}</label>
+        {#each depts as dpt}
+          <label class="field-label" for="radio">
+            <input
+              class="form-fields"
+              type="radio"
+              value={dpt}
+              bind:group={enteredDept}
+              id="dept"
+            />
+            {dpt}</label
+          >
+        {/each}
+      </div>
       <!-- section 2 -->
       <h1 class="text-2xl text-center">{heading2}</h1>
       <!-- q1 -->
@@ -201,7 +215,7 @@
         rows="8"
         on:input={(event) => (enteredA4 = event.target.value)}
       />
-      <!-- checkbox
+      <!-- checkbox -->
       <div class="field-group">
         <label class="field-label" for="checkbox">
           <input
@@ -215,13 +229,8 @@
           />
           {CoC}</label
         >
-      </div> -->
-      <Button
-        type="submit"
-        caption="Apply"
-        on:click={submitForm}
-        disabled={!formValid}
-      />
+      </div>
+      <Button type="submit" caption="Apply" disabled={!formValid} />
     </form>
   </div>
 </div>
