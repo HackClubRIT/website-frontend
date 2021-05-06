@@ -1,6 +1,6 @@
 <script>
   import Header from "../components/Header.svelte";
-
+  
   export let title = "Hack Club RIT’s Events";
   export let description =
     "Learn to code with us by attending our events and workshops.";

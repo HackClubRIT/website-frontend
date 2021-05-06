@@ -6,7 +6,6 @@
   export let rows = null;
   export let valid = true;
   export let validityMessage = "";
-
   let touched = false;
 </script>
 

@@ -19,8 +19,7 @@
     CoC,
   } from "./Helpers/constants";
   import { isEmailValid, isEmpty, isNumber } from "./Helpers/validate";
-  import { empty } from "svelte/internal";
-
+ 
   // bind
   let agreed = false;
   let enteredName = "";
@@ -33,7 +32,6 @@
   let enteredA3 = "";
   let enteredA4 = "";
   let githubLink = "";
-
   // validation
   let nameValid = false;
   let emailValid = false;
@@ -42,7 +40,6 @@
   let answer3Valid = false;
   let linkValid = false;
   let formValid = false;
-
   $: nameValid = !isEmpty(enteredName);
   $: emailValid = isEmailValid(enteredEmail);
   $: contactValid = isNumber(contactNumber);
@@ -56,7 +53,6 @@
     answer1Valid &&
     answer3Valid &&
     linkValid && agreed;
-
   async function submitForm() {
     const formData = {
       email: enteredEmail,
@@ -91,8 +87,6 @@
         console.log(err);
       });
     dispatch("save");
-
-    await goto("/");
   }
 </script>
 
