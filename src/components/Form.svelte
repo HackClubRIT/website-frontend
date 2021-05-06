@@ -73,7 +73,6 @@
       },
       name: enteredName,
     };
-    console.log(formData);
     await fetch("https://hackclub-backend.herokuapp.com/application/", {
       method: "POST",
       body: JSON.stringify(formData),
@@ -81,7 +80,6 @@
     })
       .then((res) => {
         if (!res.ok) {
-          console.log(res.json());
           throw new Error("Failed");
         }
         return res.json();
@@ -93,6 +91,8 @@
         console.log(err);
       });
     dispatch("save");
+
+    await goto("/");
   }
 </script>
 
@@ -230,7 +230,7 @@
           {CoC}</label
         >
       </div>
-      <Button type="submit" caption="Apply" disabled={!formValid} />
+      <Button type="submit" caption="Apply" disabled={!formValid} href="/"/>
     </form>
   </div>
 </div>
