@@ -1,5 +1,4 @@
 <script>
-  import { createEventDispatcher } from "svelte";
   import TextInput from "./TextInput.svelte";
   import Button from "./Button.svelte";
   import {
@@ -19,7 +18,7 @@
     q4,
     CoC,
   } from "./constants";
-  import { isEmailValid } from "./validate";
+  import { isEmailValid, isEmpty, isNumber } from "./validate";
 
   // bind
   let agreed;
@@ -46,18 +45,39 @@
   }
 
   function submitForm() {
-    dispatch("save", {
+    const formData = {
       name: enteredName,
       email: enteredEmail,
       contactno: contactNumber,
-      year: enteredYear,
-      dept: enteredDept,
-      github: githubLink,
-      q1: enteredA1,
-      q1: enteredA2,
-      q3: enteredA3,
-      q4: enteredA4,
-    });
+      data: {
+        year: enteredYear,
+        dept: enteredDept,
+        github: githubLink,
+        q1: enteredA1,
+        q1: enteredA2,
+        q3: enteredA3,
+        q4: enteredA4,
+      },
+    };
+
+    fetch("https://hackclub-backend.herokuapp.com/application", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: { "Content-type": application / json },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    dispatch("save");
   }
 </script>
 
@@ -78,6 +98,8 @@
         id="name"
         controlType="text"
         label={name}
+        valid={!isEmpty(enteredName)}
+        validityMessage="Please enter a valid name"
         on:input={(event) => (enteredName = event.target.value)}
       />
       <!-- email -->
@@ -85,6 +107,8 @@
         id="email"
         controlType="email"
         label={email}
+        valid={!isEmpty(enteredEmail) && isEmailValid(enteredEmail)}
+        validityMessage="Please enter a valid email"
         on:input={(event) => (enteredEmail = event.target.value)}
       />
       <!-- contact no -->
@@ -92,6 +116,8 @@
         id="contactno"
         controlType="text"
         label={contactno}
+        valid={!isEmpty(contactNumber) && isNumber(contactNumber)}
+        validityMessage="Please enter a valid contact number"
         on:input={(event) => (contactNumber = event.target.value)}
       />
       <!-- year -->
@@ -121,6 +147,8 @@
         controlType="textarea"
         label={q1}
         rows="8"
+        valid={!isEmpty(enteredA1)}
+        validityMessage="Please answer the question"
         on:input={(event) => (enteredA1 = event.target.value)}
       />
       <!-- q2 -->
@@ -135,8 +163,9 @@
       <TextInput
         id="github"
         controlType="text"
-        value=""
         label={github}
+        valid={!isEmpty(githubLink)}
+        validityMessage="Please enter a valid link"
         on:input={(event) => (githubLink = event.target.value)}
       />
       <!-- q3 -->
@@ -146,6 +175,8 @@
         value=""
         label={q3}
         rows="8"
+        valid={!isEmpty(enteredA3)}
+        validityMessage="Please answer the question"
         on:input={(event) => (enteredA3 = event.target.value)}
       />
       <!-- q4 -->
@@ -157,19 +188,21 @@
         rows="8"
         on:input={(event) => (enteredA4 = event.target.value)}
       />
-      <!-- checkbox -->
+      <!-- checkbox
       <div class="field-group">
         <label class="field-label" for="checkbox">
           <input
             class="h5"
             type="checkbox"
             bind:checked={agreed}
+            valid={agreed}
+            validityMessage = "Please checkbox"
             name="checkbox"
             id="checkbox"
           />
           {CoC}</label
         >
-      </div>
+      </div> -->
       <!-- <Button type="submit" caption="Apply" on:click="{()=>dispatch()}"/> -->
     </form>
   </div>

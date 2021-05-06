@@ -1,29 +1,48 @@
 <script>
-  import { isEmailValid } from "./validate";
-
   export let controlType;
   export let id;
   export let label;
   export let value = null;
   export let rows = null;
-  export let email = null;
+  export let valid = true;
+  export let validityMessage = "";
   export let options = null;
+
+  let touched = false;
 </script>
 
 <div class="field-group">
   <label class="field-label" for={id}>{label}</label>
   {#if controlType === "text"}
-    <input class="form-fields" type="text" {id} {value} on:input />
+    <input
+      class="form-fields"
+      class:border-red="{!valid && touched}"
+      type="text"
+      {id}
+      {value}
+      on:input
+      on:blur={() => (touched = true)}
+    />
   {:else if controlType === "email"}
     <input
-      class="form-fields {isEmailValid(email) ? '' : 'border-red'}"
+      class="form-fields"
+      class:border-red="{!valid && touched}"
       type="email"
       {id}
       {value}
       on:input
+      on:blur={() => (touched = true)}
     />
   {:else if controlType === "textarea"}
-    <textarea class="form-fields" {rows} {id} {value} on:input />
+    <textarea
+      class="form-fields"
+      class:border-red="{!valid && touched}"
+      {rows}
+      {id}
+      {value}
+      on:input
+      on:blur={() => (touched = true)}
+    />
   {:else if controlType === "radio"}
     {#each options as opt}
       <label class="field-label" for="radio">
@@ -37,5 +56,8 @@
         {opt}</label
       >
     {/each}
+  {/if}
+  {#if validityMessage && !valid && touched}
+    <p class="text-red p-2">{validityMessage}</p>
   {/if}
 </div>
