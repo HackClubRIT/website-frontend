@@ -45,7 +45,7 @@
 
   $: nameValid = !isEmpty(enteredName);
   $: emailValid = isEmailValid(enteredEmail);
-  $: contactValid = !isEmpty(contactNumber);
+  $: contactValid = isNumber(contactNumber);
   $: answer1Valid = !isEmpty(enteredA1);
   $: answer3Valid = !isEmpty(enteredA3);
   $: linkValid = !isEmpty(githubLink);
@@ -80,6 +80,7 @@
     })
       .then((res) => {
         if (!res.ok) {
+          console.log(res.json());
           throw new Error("Failed");
         }
         return res.json();
