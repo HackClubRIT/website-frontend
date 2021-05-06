@@ -18,7 +18,8 @@ a {
 }
 
 .container {
-  @apply w-2/3 mx-auto px-10 pb-10 h-auto text-snow;
+
+  @apply md:w-2/3 mx-auto p-10 h-auto text-snow;
 }
 
 .btn {
@@ -26,7 +27,8 @@ a {
 }
 
 .anchor {
-  @apply block h-5 px-2 leading-10 md:h-10 bg-red text-snow md:my-2 md:px-5 rounded-r-full hover:bg-cyan hover:text-darker;
+  @apply hidden md:block h-10 bg-red text-snow my-2 px-5 leading-10 rounded-r-full hover:bg-cyan hover:text-darker;
+
 }
 
 .card {
