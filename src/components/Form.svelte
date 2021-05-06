@@ -1,6 +1,6 @@
 <script>
-  import TextInput from "./TextInput.svelte";
-  import Button from "./Button.svelte";
+  import TextInput from "./UI/TextInput.svelte";
+  import Button from "./UI/Button.svelte";
   import {
     heading1,
     name,
@@ -17,8 +17,8 @@
     q3,
     q4,
     CoC,
-  } from "./constants";
-  import { isEmailValid, isEmpty, isNumber } from "./validate";
+  } from "./Helpers/constants";
+  import { isEmailValid, isEmpty, isNumber } from "./Helpers/validate";
 
   // bind
   let agreed;
