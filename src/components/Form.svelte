@@ -19,6 +19,7 @@
     CoC,
   } from "./Helpers/constants";
   import { isEmailValid, isEmpty, isNumber } from "./Helpers/validate";
+  import { empty } from "svelte/internal";
 
   // bind
   let agreed;
@@ -32,6 +33,29 @@
   let enteredA3 = "";
   let enteredA4 = "";
   let githubLink = "";
+
+  // validation
+  let nameValid = false;
+  let emailValid = false;
+  let contactValid = false;
+  let answer1Valid = false;
+  let answer3Valid = false;
+  let linkValid = false;
+  let formValid = false;
+
+  $: nameValid = !isEmpty(enteredName);
+  $: emailValid = isEmailValid(enteredEmail);
+  $: contactValid = !isEmpty(contactNumber);
+  $: answer1Valid = !isEmpty(enteredA1);
+  $: answer3Valid = !isEmpty(enteredA3);
+  $: linkValid = !isEmpty(githubLink);
+  $: formValid =
+    nameValid &&
+    emailValid &&
+    contactValid &&
+    answer1Valid &&
+    answer3Valid &&
+    linkValid;
 
   function submitForm() {
     const formData = {
@@ -86,7 +110,7 @@
         id="name"
         controlType="text"
         label={name}
-        valid={!isEmpty(enteredName)}
+        valid={nameValid}
         validityMessage="Please enter a valid name"
         on:input={(event) => (enteredName = event.target.value)}
       />
@@ -95,7 +119,7 @@
         id="email"
         controlType="email"
         label={email}
-        valid={isEmailValid(enteredEmail)}
+        valid={emailValid}
         validityMessage="Please enter a valid email"
         on:input={(event) => (enteredEmail = event.target.value)}
       />
@@ -104,7 +128,7 @@
         id="contactno"
         controlType="text"
         label={contactno}
-        valid={!isEmpty(contactNumber) && isNumber(contactNumber)}
+        valid={contactValid}
         validityMessage="Please enter a valid contact number"
         on:input={(event) => (contactNumber = event.target.value)}
       />
@@ -135,7 +159,7 @@
         controlType="textarea"
         label={q1}
         rows="8"
-        valid={!isEmpty(enteredA1)}
+        valid={answer1Valid}
         validityMessage="Please answer the question"
         on:input={(event) => (enteredA1 = event.target.value)}
       />
@@ -152,7 +176,7 @@
         id="github"
         controlType="text"
         label={github}
-        valid={!isEmpty(githubLink)}
+        valid={linkValid}
         validityMessage="Please enter a valid link"
         on:input={(event) => (githubLink = event.target.value)}
       />
@@ -163,7 +187,7 @@
         value=""
         label={q3}
         rows="8"
-        valid={!isEmpty(enteredA3)}
+        valid={answer3Valid}
         validityMessage="Please answer the question"
         on:input={(event) => (enteredA3 = event.target.value)}
       />
@@ -191,7 +215,12 @@
           {CoC}</label
         >
       </div> -->
-      <Button type="submit" caption="Apply" on:click="{submitForm}"/>
+      <Button
+        type="submit"
+        caption="Apply"
+        on:click={submitForm}
+        disabled={!formValid}
+      />
     </form>
   </div>
 </div>
