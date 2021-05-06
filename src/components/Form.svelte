@@ -33,17 +33,6 @@
   let enteredA4 = "";
   let githubLink = "";
 
-  //vaildate
-  let isFormValid = false;
-
-  $: if (isEmailValid(enteredEmail)) {
-    isFormValid = true;
-    console.log(isFormValid);
-  } else {
-    isFormValid = false;
-    console.log(isFormValid);
-  }
-
   function submitForm() {
     const formData = {
       name: enteredName,
@@ -92,7 +81,6 @@
       <h1 class="text-2xl text-center">
         {heading1}
       </h1>
-
       <!-- name -->
       <TextInput
         id="name"
