@@ -1,6 +1,8 @@
 <script>
   export let title;
   export let description;
+  export let moreOnThat = "";
+  export let extra = "";
 </script>
 
 <div class="w-full py-16 bg-dark text-white">
@@ -8,6 +10,13 @@
     <h1 class="text-2xl md:text-6xl">{title}</h1>
     <p class="text-xl w-2/3 mx-auto">
       {description}
+      <br />
+      <br />
+      {moreOnThat}
+    </p>
+    <br />
+    <p class="text-xl w-2/3 mx-auto">
+      {extra}
     </p>
   </div>
 </div>
