@@ -1,6 +1,7 @@
 <script>
   import TextInput from "./UI/TextInput.svelte";
   import Button from "./UI/Button.svelte";
+  import Modal from "./UI/Modal.svelte";
   import {
     heading1,
     name,
@@ -19,7 +20,7 @@
     CoC,
   } from "./Helpers/constants";
   import { isEmailValid, isEmpty, isNumber } from "./Helpers/validate";
- 
+
   // bind
   let agreed = false;
   let enteredName = "";
@@ -32,6 +33,7 @@
   let enteredA3 = "";
   let enteredA4 = "";
   let githubLink = "";
+  let content = "";
   // validation
   let nameValid = false;
   let emailValid = false;
@@ -40,6 +42,7 @@
   let answer3Valid = false;
   let linkValid = false;
   let formValid = false;
+  
   $: nameValid = !isEmpty(enteredName);
   $: emailValid = isEmailValid(enteredEmail);
   $: contactValid = isNumber(contactNumber);
@@ -52,7 +55,9 @@
     contactValid &&
     answer1Valid &&
     answer3Valid &&
-    linkValid && agreed;
+    linkValid &&
+    agreed;
+
   async function submitForm() {
     const formData = {
       email: enteredEmail,
@@ -77,6 +82,19 @@
       .then((res) => {
         if (!res.ok) {
           throw new Error("Failed");
+        } else {
+          agreed = false;
+          enteredName = "";
+          enteredEmail = "";
+          contactNumber = "";
+          enteredYear = "1";
+          enteredDept = "CSE";
+          enteredA1 = "";
+          enteredA2 = "";
+          enteredA3 = "";
+          enteredA4 = "";
+          githubLink = "";
+          content = "";
         }
         return res.json();
       })
@@ -91,11 +109,11 @@
 </script>
 
 <div class="md:flex md:items-center h-full md:p-10 w-full">
+  <Modal {content} />
   <div class="form-container">
     <form
       on:submit|preventDefault={submitForm}
       class="mb-4 md:flex md:flex-wrap md:justify-between"
-      action="/"
       method="post"
     >
       <h1 class="text-2xl text-center">
@@ -217,14 +235,14 @@
             type="checkbox"
             bind:checked={agreed}
             valid={agreed}
-            validityMessage = "Please checkbox"
+            validityMessage="Please checkbox"
             name="checkbox"
             id="checkbox"
           />
           {CoC}</label
         >
       </div>
-      <Button type="submit" caption="Apply" disabled={!formValid} href="/"/>
+      <Button type="submit" caption="Apply" disabled={!formValid} />
     </form>
   </div>
 </div>

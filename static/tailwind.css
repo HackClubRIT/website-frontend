@@ -54,3 +54,8 @@ a {
 .field-label {
   @apply font-bold text-lg text-snow mb-2;
 }
+
+.modal__footer.modal__content {
+  @apply p-4;
+}
+
