@@ -42,7 +42,7 @@
   let answer3Valid = false;
   let linkValid = false;
   let formValid = false;
-  
+
   $: nameValid = !isEmpty(enteredName);
   $: emailValid = isEmailValid(enteredEmail);
   $: contactValid = isNumber(contactNumber);
@@ -81,21 +81,25 @@
     })
       .then((res) => {
         if (!res.ok) {
-          throw new Error("Failed");
+          if (res.status === 400) {
+            alert("The data entered is invalid");
+            console.log("response body"+res.body);
+          } else if (res.status === 500)
+            alert("Please try again later, our server is currently down.");
         } else {
-          agreed = false;
-          enteredName = "";
-          enteredEmail = "";
-          contactNumber = "";
-          enteredYear = "1";
-          enteredDept = "CSE";
-          enteredA1 = "";
-          enteredA2 = "";
-          enteredA3 = "";
-          enteredA4 = "";
-          githubLink = "";
-          content = "";
         }
+        agreed = false;
+        enteredName = "";
+        enteredEmail = "";
+        contactNumber = "";
+        enteredYear = "1";
+        enteredDept = "CSE";
+        enteredA1 = "";
+        enteredA2 = "";
+        enteredA3 = "";
+        enteredA4 = "";
+        githubLink = "";
+        content = "";
         return res.json();
       })
       .then((data) => {

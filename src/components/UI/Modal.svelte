@@ -44,4 +44,9 @@
     display: none;
   }
 
+  .backdrop.visible {
+    display: block;
+    pointer-events: all;
+  }
+
 </style>
