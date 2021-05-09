@@ -88,18 +88,6 @@
             alert("Please try again later, our server is currently down.");
         } else {
         }
-        agreed = false;
-        enteredName = "";
-        enteredEmail = "";
-        contactNumber = "";
-        enteredYear = "1";
-        enteredDept = "CSE";
-        enteredA1 = "";
-        enteredA2 = "";
-        enteredA3 = "";
-        enteredA4 = "";
-        githubLink = "";
-        content = "";
         return res.json();
       })
       .then((data) => {
@@ -118,6 +106,7 @@
     <form
       on:submit|preventDefault={submitForm}
       class="mb-4 md:flex md:flex-wrap md:justify-between"
+      action="/"
       method="post"
     >
       <h1 class="text-2xl text-center">
