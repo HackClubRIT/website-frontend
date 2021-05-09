@@ -83,10 +83,13 @@
         if (!res.ok) {
           if (res.status === 400) {
             alert("The data entered is invalid");
-            console.log("response body"+res.body);
+            console.log("response body" + res.body);
           } else if (res.status === 500)
             alert("Please try again later, our server is currently down.");
         } else {
+          alert(
+            "Your application has been submitted sucessfully. We'll get back to you soon."
+          );
         }
         return res.json();
       })
