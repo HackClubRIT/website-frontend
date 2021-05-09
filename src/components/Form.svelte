@@ -2,6 +2,7 @@
   import TextInput from "./UI/TextInput.svelte";
   import Button from "./UI/Button.svelte";
   import Modal from "./UI/Modal.svelte";
+  import NProgress from "nprogress";
   import {
     heading1,
     name,
@@ -58,6 +59,11 @@
     linkValid &&
     agreed;
 
+  NProgress.configure({
+    minimum: 0.16,
+    showSpinner: false,
+  });
+
   async function submitForm() {
     const formData = {
       email: enteredEmail,
@@ -74,6 +80,7 @@
       },
       name: enteredName,
     };
+    NProgress.start();
     const res = await fetch(
       "https://hackclub-backend.herokuapp.com/application/",
       {
@@ -87,16 +94,15 @@
     if (!res.ok) {
       if (res.status === 400) {
         alert("The data entered is invalid");
-        console.log("response body" + res.body);
       } else if (res.status === 500)
         alert("Please try again later, our server is currently down.");
     } else {
-      console.log("nvaiefv nr");
       alert(
         "Your application has been submitted sucessfully. We'll get back to you soon."
       );
     }
     dispatch("save");
+    NProgress.done();
   }
 </script>
 
