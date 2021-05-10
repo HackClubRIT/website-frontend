@@ -242,7 +242,7 @@
           {CoC}</label
         >
       </div>
-      <Button type="submit" caption="Apply" disabled={!formValid} />
+      <Button type="submit" caption="Apply" disabled={!formValid} href="/membership"/>
     </form>
   </div>
 </div>
