@@ -91,19 +91,19 @@
     ).catch((err) => {
       console.log(err);
     });
+    NProgress.done();
     if (!res.ok) {
-      NProgress.done();
       if (res.status === 400) {
         alert("The data entered is invalid");
       } else if (res.status === 500)
         alert("Please try again later, our server is currently down.");
     } else {
-      NProgress.done();
       alert(
         "Your application has been submitted sucessfully. We'll get back to you soon."
       );
     }
     dispatch("save");
+    window.location.href = "/";
   }
 </script>
 
@@ -242,7 +242,7 @@
           {CoC}</label
         >
       </div>
-      <Button type="submit" caption="Apply" disabled={!formValid} href="/membership"/>
+      <Button type="submit" caption="Apply" disabled={!formValid} />
     </form>
   </div>
 </div>
