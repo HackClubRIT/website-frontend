@@ -44,7 +44,7 @@
 <!-- Content -->
 
 <div id="main" class="text-sm md:text-lg">
-  <div id="joinus" class="text-center bg-dark pt-10 px-10">
+  <div id="joinus" class="md:text-center bg-dark pt-10 px-10">
     <Header {title} {description} />
 
     <button class="btn"><a href="membership">Join Us</a></button>
