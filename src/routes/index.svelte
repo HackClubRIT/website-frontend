@@ -49,7 +49,6 @@
     <Header {title} {description} />
 
     <Button caption="Join Us" href="/membership"/>
-
   </div>
   <svg
     class="fill-current text-dark"
@@ -92,7 +91,7 @@
 
   <div id="events" class="container">
     <h2 class="text-2xl">EVENTS</h2>
-    <div class="md:flex justify-between">
+    <div class="container grid grid-cols-3 gap-4">
       <div class="card h-24 w-24 md:h-96 md:w-96" />
       <div class="card h-24 w-24 md:h-96 md:w-96" />
       <div class="card h-24 w-24 md:h-96 md:w-96" />

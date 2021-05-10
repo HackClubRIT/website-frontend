@@ -6,7 +6,7 @@
 </script>
 
 {#if href}
-  <a class="btn mx-auto" {href}>{caption}</a>
+  <button class="btn mx-auto"><a {href}>{caption}</a></button>
 {:else}
   <button class="btn mx-auto" {type} on:click {disabled}>{caption}</button>
 {/if}

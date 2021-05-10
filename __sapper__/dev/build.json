@@ -2,7 +2,7 @@
   "bundler": "rollup",
   "shimport": "2.0.4",
   "assets": {
-    "main": "client.372e334f.js"
+    "main": "client.f8520182.js"
   },
   "css": {
     "main": [
@@ -11,31 +11,31 @@
   },
   "dependencies": {
     "index.svelte": [
-      "index.baa26c15.js",
-      "Header.829f12af.js",
-      "Button.667d6067.js",
+      "index.62f48686.js",
+      "Header.4314ecac.js",
+      "Button.a436a0d4.js",
       "inject_styles.5607aec6.js"
     ],
     "membership.svelte": [
-      "membership.f08dfaf7.js",
-      "Header.829f12af.js",
-      "Button.667d6067.js",
+      "membership.169aaa59.js",
+      "Header.4314ecac.js",
+      "Button.a436a0d4.js",
       "inject_styles.5607aec6.js",
       "membership-83993ecc.css"
     ],
     "newsletter.svelte": [
-      "newsletter.5729fd0c.js",
-      "Header.829f12af.js",
+      "newsletter.bcae265c.js",
+      "Header.4314ecac.js",
       "inject_styles.5607aec6.js"
     ],
     "scrapbook.svelte": [
-      "scrapbook.8bf9dab2.js",
-      "Header.829f12af.js",
+      "scrapbook.e25300ed.js",
+      "Header.4314ecac.js",
       "inject_styles.5607aec6.js"
     ],
     "events.svelte": [
-      "events.53ffb1ba.js",
-      "Header.829f12af.js",
+      "events.299e8133.js",
+      "Header.4314ecac.js",
       "inject_styles.5607aec6.js"
     ]
   }
