@@ -64,7 +64,7 @@
     showSpinner: false,
   });
 
-  async function submitForm() {
+  async function submitForm(event) {
     const formData = {
       email: enteredEmail,
       data: {
@@ -91,6 +91,7 @@
     ).catch((err) => {
       console.log(err);
     });
+
     NProgress.done();
     if (!res.ok) {
       if (res.status === 400) {
@@ -102,6 +103,12 @@
         "Your application has been submitted sucessfully. We'll get back to you soon."
       );
     }
+    const inputs = event.srcElement.querySelectorAll(
+      ".field-group .form-fields"
+    );
+    for (const input of inputs) input.value = "";
+    agreed = false;
+
     dispatch("save");
     window.location.replace("/");
   }
@@ -113,7 +120,7 @@
     <form
       on:submit|preventDefault={submitForm}
       class="mb-4 md:flex md:flex-wrap md:justify-between"
-      action="https://hackclubrit.tech/"
+      action="/membership"
       method="post"
     >
       <h1 class="text-2xl text-center">
