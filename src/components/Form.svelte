@@ -103,7 +103,7 @@
       );
     }
     dispatch("save");
-    window.location.href = "/";
+    window.location.replace("/");
   }
 </script>
 
