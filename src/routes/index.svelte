@@ -1,5 +1,6 @@
 <script>
   import Header from "../components/Header.svelte";
+  import Button from "../components/UI/Button.svelte";
 
   export let title =
     "Hack Club is a nonprofit network of makers around the world.";
@@ -44,10 +45,11 @@
 <!-- Content -->
 
 <div id="main" class="text-sm md:text-lg">
-  <div id="joinus" class="text-center bg-dark pt-10 px-10">
+  <div id="joinus" class="text-center bg-dark pt-10 pb-3 px-10">
     <Header {title} {description} />
 
-    <button class="btn"><a href="membership">Join Us</a></button>
+    <Button caption="Join Us" href="/membership"/>
+
   </div>
   <svg
     class="fill-current text-dark"
