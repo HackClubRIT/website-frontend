@@ -113,7 +113,7 @@
     <form
       on:submit|preventDefault={submitForm}
       class="mb-4 md:flex md:flex-wrap md:justify-between"
-      action="/"
+      action="https://hackclubrit.tech/"
       method="post"
     >
       <h1 class="text-2xl text-center">
