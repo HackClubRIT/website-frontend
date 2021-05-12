@@ -4,3 +4,5 @@
 yarn-error.log
 /__sapper__/
 /static/main.css
+.env
+.sessions
