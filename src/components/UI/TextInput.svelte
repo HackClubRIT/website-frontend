@@ -14,7 +14,7 @@
   {#if controlType === "text"}
     <input
       class="form-fields"
-      class:border-red="{!valid && touched}"
+      class:border-red={!valid && touched}
       type="text"
       {id}
       {value}
@@ -24,8 +24,18 @@
   {:else if controlType === "email"}
     <input
       class="form-fields"
-      class:border-red="{!valid && touched}"
+      class:border-red={!valid && touched}
       type="email"
+      {id}
+      {value}
+      on:input
+      on:blur={() => (touched = true)}
+    />
+  {:else if controlType === "password"}
+    <input
+      class="form-fields"
+      class:border-red={!valid && touched}
+      type="password"
       {id}
       {value}
       on:input
@@ -34,13 +44,13 @@
   {:else if controlType === "textarea"}
     <textarea
       class="form-fields"
-      class:border-red="{!valid && touched}"
+      class:border-red={!valid && touched}
       {rows}
       {id}
       {value}
       on:input
       on:blur={() => (touched = true)}
-    />    
+    />
   {/if}
   {#if validityMessage && !valid && touched}
     <p class="text-red p-2">{validityMessage}</p>

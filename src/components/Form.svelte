@@ -81,14 +81,11 @@
       name: enteredName,
     };
     NProgress.start();
-    const res = await fetch(
-      "https://hackclub-backend.herokuapp.com/application/",
-      {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: { "Content-type": "application / json" },
-      }
-    ).catch((err) => {
+    const res = await fetch(process.env.SAPPER_APP_APPLICATION_URL, {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: { "Content-type": "application / json" },
+    }).catch((err) => {
       console.log(err);
     });
 
@@ -119,7 +116,6 @@
     <form
       on:submit|preventDefault={submitForm}
       class="mb-4 md:flex md:flex-wrap md:justify-between"
-      action="/membership"
       method="post"
     >
       <h1 class="text-2xl text-center">
