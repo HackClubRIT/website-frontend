@@ -73,7 +73,7 @@
         dept: enteredDept,
         github: githubLink,
         q1: enteredA1,
-        q1: enteredA2,
+        q2: enteredA2,
         q3: enteredA3,
         q4: enteredA4,
         CoC: agreed,
