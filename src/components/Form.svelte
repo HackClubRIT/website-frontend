@@ -44,6 +44,8 @@
   let linkValid = false;
   let formValid = false;
 
+  const validityMessage = "Please check the checkbox";
+
   $: nameValid = !isEmpty(enteredName);
   $: emailValid = isEmailValid(enteredEmail);
   $: contactValid = isNumber(contactNumber);
@@ -94,10 +96,10 @@
 
     NProgress.done();
     if (!res.ok) {
-      if (res.status === 400) {
-        alert("The data entered is invalid");
-      } else if (res.status === 500)
+      if (res.status === 500)
         alert("Please try again later, our server is currently down.");
+    } else if (res.status >= 400) {
+      alert("The data entered is invalid");
     } else {
       alert(
         "Your application has been submitted sucessfully. We'll get back to you soon."
@@ -242,12 +244,14 @@
             type="checkbox"
             bind:checked={agreed}
             valid={agreed}
-            validityMessage="Please checkbox"
             name="checkbox"
             id="checkbox"
           />
           {CoC}</label
         >
+        {#if validityMessage && !agreed}
+        <p class="text-red p-2">{validityMessage}</p>
+      {/if}
       </div>
       <Button type="submit" caption="Apply" disabled={!formValid} />
     </form>
