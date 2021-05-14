@@ -37,13 +37,13 @@ async function send({ method, path, data, session, base }) {
   }
 
   let fullPath = encodeURI(`${base}/${path}`);
-  if (true) {
+  if (process.env.SAPPER_APP_DEBUG_MODE) {
     console.log(method, fullPath);
     console.log(opts);
   }
   const response = await fetch(fullPath, opts);
   const json = await response.json();
-  if (true) {
+  if (process.env.SAPPER_APP_DEBUG_MODE) {
     console.log("DEBUG:", json);
   }
   return { response, json };

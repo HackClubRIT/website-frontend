@@ -1,6 +1,6 @@
 <script>
   export let title;
-  export let description;
+  export let description = "";
   export let moreOnThat = "";
   export let extra = "";
 </script>

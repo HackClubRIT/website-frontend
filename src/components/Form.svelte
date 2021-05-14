@@ -82,7 +82,7 @@
       name: enteredName,
     };
     NProgress.start();
-    const res = await api.post("http://localhost:8000", "application", formData);
+    const res = await api.post(process.env.SAPPER_APP_API_ENDPOINT, "application", formData);
 
     const detail = res.json.detail;
 
