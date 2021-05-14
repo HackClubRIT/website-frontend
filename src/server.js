@@ -28,7 +28,7 @@ polka() // You can also use Express
 	compression({ threshold: 0 }),
     sirv('static', { dev }),
     sapper.middleware({
-      session: (req, res) => {
+      session: (req) => {
         return ({
           token: req.session.token
         })}

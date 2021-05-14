@@ -1,4 +1,5 @@
 <script>
+  import * as api from "../shared/apis";
   import TextInput from "./UI/TextInput.svelte";
   import Button from "./UI/Button.svelte";
   import Modal from "./UI/Modal.svelte";
@@ -81,25 +82,14 @@
       name: enteredName,
     };
     NProgress.start();
-    const res = await fetch(process.env.SAPPER_APP_APPLICATION_URL, {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: { "Content-type": "application / json" },
-    }).catch((err) => {
-      console.log(err);
-    });
+    const res = await api.post("http://localhost:8000", "application", formData);
+
+    const detail = res.json.detail;
 
     NProgress.done();
-    if (!res.ok) {
-      if (res.status === 400) {
-        alert("The data entered is invalid");
-      } else if (res.status === 500)
-        alert("Please try again later, our server is currently down.");
-    } else {
-      alert(
-        "Your application has been submitted sucessfully. We'll get back to you soon."
-      );
-    }
+    if(detail)  {
+      alert(detail)
+    } else alert("Your application has been submitted sucessfully");
     const inputs = event.srcElement.querySelectorAll(
       ".field-group .form-fields"
     );
