@@ -1,44 +1,57 @@
 <script>
-  export let name;
+  import { q1, q2, q3, q4 } from "../Helpers/constants";
   export let email;
   export let data;
-  export let status ;
+  export let status;
 </script>
 
 <div class="container">
-  <div class="bg-dark">
-    <div class="p-4 text-cyan text-base">
-      {name}
-    </div>
-    <div class="p-4 text-snow text-base">
-      <li class="p-2">Email id : <br /> {email}</li>
-      <li class="p-2">Contact No: <br /> {data.contactno}</li>
-      <li class="p-2">Department: <br /> {data.dept}</li>
-      <li class="p-2">Year : <br /> {data.year}</li>
-      <li class="p-2">Github Lik: <br /> {data.github}</li>
-      {#if data.q1}
-        <li class="p-2">
-          q1: <br />
-          {data.q1}
-        </li>
-      {/if}
-      {#if data.q2}
-        <li class="p-2">
-          q2: <br />
-          {data.q2}
-        </li>
-      {/if}{#if data.q3}
-        <li class="p-2">
-          q3: <br />
-          {data.q3}
-        </li>
-      {/if}{#if data.q4}
-        <li class="p-2">
-          q4: <br />
-          {data.q4}
-        </li>
-      {/if}
-      <li class="p-2">Status: <br /> {status}</li>
-    </div>
+  <div class="p-4 text-cyan text-base">Email</div>
+  <div class="pb-4 text-snow text-base">
+    <li>{email}</li>
+  </div>
+  <div class="p-4 text-cyan text-base">Contact Number</div>
+  <div class="pb-4 text-snow text-base">
+    <li>{data.contactno}</li>
+  </div>
+  <div class="p-4 text-cyan text-base">Department</div>
+  <div class="pb-4 text-snow text-base">
+    <li>{data.dept}</li>
+  </div>
+  <div class="p-4 text-cyan text-base">Year</div>
+  <div class="pb-4 text-snow text-base">
+    <li>{data.year}</li>
+  </div>
+  <div class="p-4 text-cyan text-base">Github</div>
+  <div class="pb-4 text-snow text-base">
+    <li>{data.github}</li>
+  </div>
+  <div class="p-4 text-cyan text-base">{q1}</div>
+  {#if data.q1}
+    <li>
+      {data.q1}
+    </li>
+  {/if}
+  <div class="p-4 text-cyan text-base">{q2}</div>
+  {#if data.q2}
+    <li>
+      {data.q2}
+    </li>
+  {/if}
+  <div class="p-4 text-cyan text-base">{q3}</div>
+  {#if data.q3}
+    <li>
+      {data.q3}
+    </li>
+  {/if}
+  <div class="p-4 text-cyan text-base">{q4}</div>
+  {#if data.q4}
+    <li>
+      {data.q4}
+    </li>
+  {/if}
+  <div class="p-4 text-cyan text-base">Status</div>
+  <div class="pb-4 text-snow text-base">
+    <li>{status}</li>
   </div>
 </div>
