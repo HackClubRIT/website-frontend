@@ -66,8 +66,8 @@
         </li>
         <li class="m-5 px-5" on:click={handleHamClick}>
           <a
-            aria-current={segment === "newsletter" ? "page" : undefined}
-            href="newsletter">Newsletter</a
+            aria-current={segment === "login" ? "page" : undefined}
+            href="login">Login</a
           >
         </li>
       </ul>

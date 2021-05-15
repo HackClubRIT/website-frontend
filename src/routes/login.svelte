@@ -1,42 +1,22 @@
-<script context="module">
-  import * as api from "../shared/apis";
-
-  export async function preload(page, session) {
-    if (page.query.confirmation_token) {
-      const url = `users/confirmation?confirmation_token=${page.query.confirmation_token}`;
-      const { response, json } = await api.get(session.API_ENDPOINT, url);
-      return { confirmed: response.status === 200, message: json };
-    }
-  }
-</script>
-
 <script>
-  import { stores } from "@sapper/app";
-  import { user } from "../shared/stored";
+  import { stores, goto } from "@sapper/app";
   import NProgress from "nprogress";
 
+  import * as api from "../shared/apis";
+  import { user } from "../shared/stored";
   import Header from "../components/Header.svelte";
   import Button from "../components/UI/Button.svelte";
   import TextInput from "../components/UI/TextInput.svelte";
   import { isEmailValid, isEmpty } from "../components/Helpers/validate";
 
-  export let confirmed = false;
-  export let message = "";
-
-  const { page, session } = stores();
+  const {session } = stores();
 
   let email = "Enter Your Email";
   let password = "Enter Your Password";
-  let success = "";
   let errors = [];
 
   let enteredEmail = "";
   let enteredPassword = "";
-
-  if ($session.NODE_ENV === "development") {
-    enteredEmail = "mod@hackclubrit.com";
-    enteredPassword = "password";
-  }
 
   let emailValid = false;
   let passwordValid = false;
@@ -51,18 +31,6 @@
     showSpinner: false,
   });
 
-  if ($page.query.confirmation_token) {
-    if (confirmed) {
-      success = "Your email address has been confirmed!";
-    } else {
-      if (message !== "" && message.email && message.email.length >= 0) {
-        errors = [`Email ${message.email[0]}`];
-      } else {
-        errors = ["Token is invalid."];
-      }
-    }
-  }
-
   async function handleLogin() {
     errors = [];
     const { response, json } = await api.post(
@@ -71,19 +39,16 @@
       { email: enteredEmail, password: enteredPassword }
     );
     if (response.status === 200) {
-      success = "Signed in!";
       user.set(json);
+      $session.TOKEN = json.access_token;
+      $session.TYPE = json.token_type;
+      goto("applicationView/");
     } else if (response.status === 401) {
-      success = undefined;
-      if (json.error) {
-        errors = [...errors, json.error];
-      } else {
-        errors = [...errors, json.detail];
-      }
+      errors = [...errors, json.detail];
+    } else if (response.status === 422) {
+      errors = [...errors, json.detail[0].msg];
     } else if (response.status === 500) {
-      errors = [
-        "Oops, something went wrong! How embarrassing, try again soon.",
-      ];
+      errors = ["Oops, something went wrong! Try again soon."];
     }
   }
 </script>
@@ -101,11 +66,8 @@
       class="mb-4 md:flex md:flex-wrap md:justify-between"
       method="post"
     >
-      {#if success}
-        {success}
-      {/if}
       {#if errors.length > 0}
-        {errors[0]}
+        <p class="text-red p-2">{errors[0]}</p>
       {/if}
       <TextInput
         id="email"

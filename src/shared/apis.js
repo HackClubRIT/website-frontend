@@ -27,11 +27,11 @@ async function send({ method, path, data, session, base }) {
     }
 
     // Set the Authorization header
-    if (session.jwt) {
-      if (session.jwt.includes("Bearer")) {
-        opts.headers["Authorization"] = session.jwt;
+    if (session.TOKEN) {
+      if (session.TOKEN.includes("Bearer")) {
+        opts.headers["Authorization"] = session.TOKEN;
       } else {
-        opts.headers["Authorization"] = `Bearer ${session.jwt}`;
+        opts.headers["Authorization"] = `Bearer ${session.TOKEN}`;
       }
     }
   }
