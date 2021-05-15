@@ -35,8 +35,6 @@
   export let id;
   export let session;
 
-  console.log(session);
-
   async function handleApprove(val) {
     let type = "";
 
