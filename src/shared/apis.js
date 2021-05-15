@@ -64,6 +64,6 @@ export function post(base, path, data, session) {
   return send({ method: "POST", path, data, session, base });
 }
 
-export function put(base, path, data, session) {
-  return send({ method: "PUT", path, data, session, base });
+export function patch(base, path, data, session) {
+  return send({ method: "PATCH", path, data, session, base });
 }

@@ -34,7 +34,7 @@
   async function handleLogin() {
     errors = [];
     const { response, json } = await api.post(
-      "http://localhost:8000",
+     process.env.SAPPER_APP_API_ENDPOINT,
       "auth/token",
       { email: enteredEmail, password: enteredPassword }
     );

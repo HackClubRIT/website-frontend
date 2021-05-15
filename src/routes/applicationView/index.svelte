@@ -8,7 +8,7 @@
 
     let errors = [];
     const { response, json } = await api.get(
-      "http://localhost:8000",
+      process.env.SAPPER_APP_API_ENDPOINT,
       "application",
       session
     );
@@ -29,12 +29,16 @@
   import Header from "../../components/Header.svelte";
 
   export let applications = [];
+  export let errors = [];
 </script>
 
 <Header title="Membership Applications" />
 
 <ul>
   <div class="container">
+    {#if errors.length > 0}
+      <p class="text-red p-2">{errors[0]}</p>
+    {/if}
     {#each applications as applicant}
       <div
         class="m-4 p-4 form-container text-cyan text-base bg-darkless  cursor-pointer"
