@@ -9,7 +9,7 @@
   import TextInput from "../components/UI/TextInput.svelte";
   import { isEmailValid, isEmpty } from "../components/Helpers/validate";
 
-  const {session } = stores();
+  const { session } = stores();
 
   let email = "Enter Your Email";
   let password = "Enter Your Password";
@@ -34,9 +34,9 @@
   async function handleLogin() {
     errors = [];
     const { response, json } = await api.post(
-     process.env.SAPPER_APP_API_ENDPOINT,
+      process.env.SAPPER_APP_API_ENDPOINT,
       "auth/token",
-      { email: enteredEmail, password: enteredPassword }
+      { type: "formData", username: enteredEmail, password: enteredPassword }
     );
     if (response.status === 200) {
       user.set(json);

@@ -15,7 +15,9 @@ async function send({ method, path, data, session, base }) {
       opts.body = JSON.stringify(data);
     } else if (data.type === "formData") {
       const formData = new FormData();
-      formData.append("image", data.image[0]);
+      for (let key in data) {
+        formData.append(key, data[key]);
+      }
       opts.body = formData;
     }
   }

@@ -74,7 +74,7 @@
         dept: enteredDept,
         github: githubLink,
         q1: enteredA1,
-        q1: enteredA2,
+        q2: enteredA2,
         q3: enteredA3,
         q4: enteredA4,
         CoC: agreed,
@@ -82,19 +82,25 @@
       name: enteredName,
     };
     NProgress.start();
-    const res = await api.post(process.env.SAPPER_APP_API_ENDPOINT, "application", formData);
+    const res = await api.post(
+      process.env.SAPPER_APP_API_ENDPOINT,
+      "application",
+      formData
+    );
 
     const detail = res.json.detail;
 
     NProgress.done();
-    if(detail)  {
-      alert(detail)
-    } else alert("Your application has been submitted sucessfully");
-    const inputs = event.srcElement.querySelectorAll(
-      ".field-group .form-fields"
-    );
-    for (const input of inputs) input.value = "";
-    agreed = false;
+    if (detail) {
+      alert(detail);
+    } else {
+      alert("Your application has been submitted sucessfully");
+      const inputs = event.srcElement.querySelectorAll(
+        ".field-group .form-fields"
+      );
+      for (const input of inputs) input.value = "";
+      agreed = false;
+    }
 
     dispatch("save");
   }

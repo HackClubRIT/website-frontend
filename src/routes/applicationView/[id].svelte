@@ -38,7 +38,11 @@
   console.log(session);
 
   async function handleApprove(val) {
-    console.log(val);
+    let type = "";
+
+    if (val) type = "approve";
+    else type = "reject";
+    alert("Are you sure you want to " + type);
     const { response, json } = await api.patch(
       process.env.SAPPER_APP_API_ENDPOINT,
       `application/${id}`,
@@ -47,7 +51,7 @@
     );
 
     if (response.status === 200) {
-      alert("Update Sucessful");
+      alert("Applicant sucessfully " + type + "d");
     } else if (response.status === 401) {
       errors = [...errors, json.detail];
     } else if (response.status === 422) {
