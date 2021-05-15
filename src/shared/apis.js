@@ -1,7 +1,3 @@
-/*
- * Make requests to some backend
- * Based on https://github.com/sveltejs/realworld/blob/master/src/node_modules/api.js
- */
 async function send({ method, path, data, session, base }) {
   const fetch =
     typeof window !== "undefined"
@@ -23,11 +19,6 @@ async function send({ method, path, data, session, base }) {
   }
 
   if (session) {
-    // Set the JWT_AUD header
-    if (session.aud) {
-      opts.headers["JWT_AUD"] = session.aud;
-    }
-
     // Set the Authorization header
     if (session.TOKEN) {
       if (session.TOKEN.includes("Bearer")) {
@@ -38,7 +29,7 @@ async function send({ method, path, data, session, base }) {
     }
   }
 
-  let fullPath = encodeURI(`${base}/${path}`);
+  let fullPath = encodeURI(`${base}/${path}/`);
   // if (process.env.SAPPER_APP_DEBUG_MODE) {
   //   console.log(method, fullPath);
   //   console.log(opts);

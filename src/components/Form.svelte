@@ -21,7 +21,7 @@
     q4,
     CoC,
   } from "./Helpers/constants";
-  import { isEmailValid, isEmpty, isNumber } from "./Helpers/validate";
+  import { isEmailValid, isEmpty, isPhoneNumber } from "./Helpers/validate";
 
   // bind
   let agreed = false;
@@ -47,7 +47,7 @@
 
   $: nameValid = !isEmpty(enteredName);
   $: emailValid = isEmailValid(enteredEmail);
-  $: contactValid = isNumber(contactNumber);
+  $: contactValid = isPhoneNumber(contactNumber);
   $: answer1Valid = !isEmpty(enteredA1);
   $: answer3Valid = !isEmpty(enteredA3);
   $: linkValid = !isEmpty(githubLink);

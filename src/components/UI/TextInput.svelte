@@ -11,41 +11,21 @@
 
 <div class="field-group">
   <label class="field-label" for={id}>{label}</label>
-  {#if controlType === "text"}
-    <input
-      class="form-fields"
-      class:border-red={!valid && touched}
-      type="text"
-      {id}
-      {value}
-      on:input
-      on:blur={() => (touched = true)}
-    />
-  {:else if controlType === "email"}
-    <input
-      class="form-fields"
-      class:border-red={!valid && touched}
-      type="email"
-      {id}
-      {value}
-      on:input
-      on:blur={() => (touched = true)}
-    />
-  {:else if controlType === "password"}
-    <input
-      class="form-fields"
-      class:border-red={!valid && touched}
-      type="password"
-      {id}
-      {value}
-      on:input
-      on:blur={() => (touched = true)}
-    />
-  {:else if controlType === "textarea"}
+  {#if controlType === "textarea"}
     <textarea
       class="form-fields"
       class:border-red={!valid && touched}
       {rows}
+      {id}
+      {value}
+      on:input
+      on:blur={() => (touched = true)}
+    />
+  {:else}
+    <input
+      class="form-fields"
+      class:border-red={!valid && touched}
+      type={controlType}
       {id}
       {value}
       on:input

@@ -8,7 +8,7 @@ export function isEmpty(val) {
   return val.trim().length === 0;
 }
 
-export function isNumber(val) {
+export function isPhoneNumber(val) {
   let phoneno = /^\d{10}$/;
-  return (val.match(phoneno) ? true : false);
+  return (val.test(phoneno));
 }

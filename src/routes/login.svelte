@@ -47,7 +47,7 @@
       errors = [...errors, json.detail];
     } else if (response.status === 422) {
       errors = [...errors, json.detail[0].msg];
-    } else if (response.status === 500) {
+    } else {
       errors = ["Oops, something went wrong! Try again soon."];
     }
   }
